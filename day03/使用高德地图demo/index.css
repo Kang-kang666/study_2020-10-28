@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    border: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+body {
+    background-color: lightsteelblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    height: 80px;
+    line-height: 80px;
+}
+
+.container {
+    width: 1000px;
+    height: 600px;
+    background-color: mediumturquoise;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.map {
+    width: 980px;
+    height: 580px;
+    border-radius: 5px;
+    line-height: 580px;
+}
+
+footer {
+    margin-top: 10px;
+}
