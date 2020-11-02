@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双飞翼布局——Flex</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        header,
+        footer {
+            height: 10vh;
+            background-color: teal;
+            text-align: center;
+        }
+
+        .container {
+            height: 80vh;
+            background-color: bisque;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .left,
+        .right {
+            width: 200px;
+            height: 100%;
+            order: 1;
+            background-color: darkseagreen;
+        }
+
+        .right {
+            order: 3;
+        }
+
+        .center {
+            flex: 1;
+            order: 2;
+        }
+
+    </style>
+</head>
+<body>
+    <header>双飞翼布局</header>
+    <div class="container">
+        <div class="center">
+            <div class="nr">
+                主区域
+            </div>
+        </div>
+        <div class="left">
+            左区域
+        </div>
+        <div class="right">
+            右区域
+        </div>
+    </div>
+    <footer>底部</footer>
+</body>
+</html>

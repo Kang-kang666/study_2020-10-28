@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex实现三列等高</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            text-align: center;
+        }
+
+        .left {
+            flex: 1;
+            background-color: coral;
+        }
+
+        .center {
+            flex: 1;
+            position: relative;
+            background-color: darkseagreen;
+        }
+
+        .right {
+            flex: 1;
+            background-color: lightsteelblue;
+        }
+
+        .zongjie {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform:translate(0, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="center">
+            <div class="zongjie">
+                <p>给容器设置flex布局方式</p>
+                <p>设置容器高度100vh用于撑开容器</p>
+                <p>flex布局默认主轴为x轴，三个盒子元素会横向布局</p>
+                <p>flex布局默认侧轴为y轴，不设置align-items,并且不设置高度时默认是stretch填充</p>
+                <p>给三个子元素设置flex: 1;将容器分为三等分</p>
+                <p>不设置子元素的高度, 默认填充父盒子高度</p>
+                <p>完成三列等宽等高布局</p>
+            </div>
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
