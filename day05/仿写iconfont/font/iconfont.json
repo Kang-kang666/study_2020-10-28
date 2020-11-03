@@ -1,0 +1,65 @@
+{
+  "id": "2175803",
+  "name": "仿写iconfont",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "109796",
+      "name": "top",
+      "font_class": "top",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "145706",
+      "name": "更多_填充",
+      "font_class": "gengduotianchong",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "15725954",
+      "name": "信息 (2)",
+      "font_class": "xinxi2",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "15725955",
+      "name": "人",
+      "font_class": "ren",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "15838535",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "16108969",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "17852599",
+      "name": "s_批量上传",
+      "font_class": "s_piliangshangchuan",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "17852606",
+      "name": "s_搜索",
+      "font_class": "s_sousuo",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    }
+  ]
+}
