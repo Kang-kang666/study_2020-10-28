@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <router-link to="/{name: 'nr1'}">导航1</router-link>
+    <router-link to="/nr2">导航2</router-link>
+    
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const neirong1 = {
+      template: '<h1>导航1的内容</h1>'
+    }
+
+    
+    const A1 = {
+        props: ['id', 'uname', 'age'],
+        template: '<h3> 学号：{{id}} 姓名：{{uname}} 年龄：{{age}}</h3>'
+    }
+
+    const neirong2 = {
+      template: `<div>
+            <h1>导航栏2</h1>
+            
+            <router-link to="/nr2/a1">内容导航栏1</router-link>
+            <router-link to="/nr2/a2">内容导航栏2</router-link>
+            <router-link to="/nr2/a3">内容导航栏3</router-link>
+            <router-link to="/nr2/a4">内容导航栏4</router-link>
+
+
+            <router-view/>
+        </div>`
+    }
+
+
+    const router = new VueRouter({
+      routes: [
+        {
+          name: 'nr1',
+          path: '/ur1',
+          component: neirong1
+        },
+        { path: '/nr2', component: neirong2,children: [
+            { path: '/nr2/:id', component: A1, props: route => ({uname: 'ckang', age: 22, id: route.params.id}) }
+        ]}
+      ]
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      data: {},
+      router
+    })
+  </script>
+</body>
+
+  
+</html>
+
+
+

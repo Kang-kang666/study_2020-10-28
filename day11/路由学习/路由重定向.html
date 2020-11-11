@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <router-link to="/nr1">导航1</router-link>
+    <router-link to="/nr2">导航2</router-link>
+    
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const neirong1 = {
+      template: '<h1>导航1的内容</h1>'
+    }
+
+    const neirong2 = {
+      template: '<h1>导航2的内容</h1>'
+    }
+
+    const router = new VueRouter({
+      routes: [
+        { path: '/', redirect: '/nr1'},
+        { path: '/nr1', component: neirong1 },
+        { path: '/nr2', component: neirong2 }
+      ]
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      data: {},
+      router
+    })
+  </script>
+</body>
+
+  
+</html>
+
+
+
