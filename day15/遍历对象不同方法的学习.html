@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历对象</title>
+</head>
+
+<body>
+    <script>
+        var dog = {
+            dName: "zz",
+            type: "阿拉斯加犬",
+            age: "23岁",
+            color: "棕红色"
+        };
+        // // 原始方法
+        for (var i in dog) {
+            console.log(i, ":", dog[i]);index
+        }
+
+        // // 使用Object.key遍历
+        Object.keys(dog).forEach( e => {
+            console.log(e, ":", dog[e]);
+        })
+
+        // // 使用Object.getOwnPropertyNames(obj)遍历对象
+        Object.getOwnPropertyNames(dog).forEach(function(e){
+            console.log(e, ":" , dog[e]);
+        });
+
+        // 使用Reflect.ownKeys(obj) 遍历
+        Reflect.ownKeys(dog).forEach(function(e){
+            console.log(e, ":", dog[e]);
+        });
+
+    </script>
+</body>
+
+</html>
