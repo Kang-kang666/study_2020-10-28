@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>表单验证_小练习</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="form">
+            <h2>注册</h2>
+
+            <div class="form-control">
+                <label for="username">姓名</label>
+                <input type="text" id="username" placeholder="请输入用户名">
+                <small>无效信息</small>
+            </div>
+            <div class="form-control">
+                <label for="username">身份</label>
+                <select>
+                    <option value="1">学生</option>
+                    <option value="2">老师</option>
+                    <option value="3">家长</option>
+                    <option value="4">管理员</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="email">邮箱</label>
+                <input type="text" id="email" placeholder="请输入邮箱">
+                <small>无效信息</small>
+            </div>
+            <div class="form-control">
+                <label for="password">密码</label>
+                <input type="password" id="password" placeholder="请输入邮箱">
+                <small>无效信息</small>
+            </div>
+            <div class="form-control">
+                <label for="password2">确认密码</label>
+                <input type="password" id="password2" placeholder="请输入邮箱">
+                <small>无效信息</small>
+            </div>
+            <div class="form-control">
+                <label for="idCode">身份证</label>
+                <input type="text" id="idCode" placeholder="请输入邮箱">
+                <small>无效信息</small>
+            </div>
+            <div class="form-control">
+                <textarea rows="2" cols="30">
+                </textarea>
+            </div>
+            <div class="form-control">
+                <label for="idCode">验证码</label>
+                <input type="text" name="phone" id="phone" value="" placeholder="请输入手机号" maxlength="11" />
+                <input type="" name="verCode" id="verCode" value="" placeholder="请输入验证码" maxlength="6"/>
+                <input type="button" name="" id="verCodeBtn" value="获取验证码" onclick="settime(this);"/>
+            </div>
+
+            <button class="tijiao">提交</button>
+        </form>
+    </div>
+
+
+    <script src="./index.js"></script>
+</body>
+</html>

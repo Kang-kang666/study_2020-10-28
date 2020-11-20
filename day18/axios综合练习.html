@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天气信息</title>
+</head>
+
+<body>
+    <div class="wrap" id="app">
+        <div class="search_form">
+          <div class="logo"><h3>天气查询</h3></div>
+          <div class="form_group">
+            <input type="text" @keyup.enter="search" class="input_txt" placeholder="请输入查询的天气" v-model="city"  />
+            <button class="input_sub" @click="search">
+              点击查询
+            </button>
+          </div>
+          <div class="hotkey">
+              <a href="javascript:;" @click="change('北京')">北京</a>
+              <a href="javascript:;" @click="change('上海')">上海</a>
+              <a href="javascript:;" @click="change('广州')">广州</a>
+              <a href="javascript:;" @click="change('深圳')">深圳</a>
+          </div>
+        </div>
+        <ul class="weather_list">
+          <li v-for=" item in weather" :key="item.date">
+            <div class="info_type">
+              <span class="iconfont">{{ item.type }}</span>
+            </div>
+            <div class="info_temp">
+              <b>{{ item.low}}</b>~<b>{{ item.high}}</b>
+            </div>
+            <div class="info_date">
+              <span>{{ item.date }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                city:"",
+                weather:[]
+            },
+            methods: {
+                search: function(){
+                    // console.log('1');
+                    // console.log(this.city);
+                    const that = this;
+                    axios.get('http://wthrcdn.etouch.cn/weather_mini?city='+this.city)
+                    .then(function(response){
+                        that.weather = response.data.data.forecast;
+                        // console.log(that.weather);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                },
+                change: function(city) {
+                    this.city = city;
+                    this.search();
+                }
+            }
+        })
+
+    </script>
+
+    <style>
+        body{
+            font-family:'Microsoft YaHei';   
+        }
+        .wrap{
+            position: fixed;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            /* background: radial-gradient(#f3fbfe, #e4f5fd, #8fd5f4); */
+            /* background:#8fd5f4; */
+            /* background: linear-gradient(#6bc6ee, #fff); */
+            background:#fff;
+        
+        }
+        .search_form{
+            width:640px;
+            margin:100px auto 0;
+        }
+        .logo {
+            width: 100px;
+            height: 50px;
+            margin:0 auto;
+        }
+        .form_group{
+            width:640px;
+            height:40px;
+            margin-top:45px;
+        }
+        .input_txt{
+           width:500px;
+           height:38px;
+           padding:0px;
+           float:left;
+           border:1px solid sandybrown;
+           border-radius: 5px 0 0 5px;
+           outline:none;
+           text-indent:10px;
+        }
+
+        .input_sub{
+            width:100px;
+            height:40px;
+            border:0px;
+            float: left;
+            background-color: sandybrown;
+            color:#fff;
+            font-size:16px;
+            outline:none;
+            cursor: pointer;
+            position: relative;
+        }
+        .input_sub.loading::before{
+            content:'';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../img/loading.gif');
+        }
+
+        .hotkey{
+            margin:3px 0 0 2px;
+        }
+
+        .hotkey a{
+            font-size:14px;
+            color:#666;
+            padding-right:15px;
+        }
+
+        .weather_list{
+            height:200px;
+            text-align:center;
+            margin-top:50px;
+            font-size:0px;
+        }
+        .weather_list li{
+            display:inline-block;
+            width:140px;
+            height:200px;
+            padding:0 10px;
+            overflow: hidden;
+            position: relative;
+            background:url('../img/line.png') right center no-repeat;
+            background-size: 1px 130px;
+        }
+
+        .weather_list li:last-child{
+            background:none;
+        }
+
+        .weather_list .col02{
+            background-color: rgba(65, 165, 158, 0.8);
+        }
+        .weather_list .col03{
+            background-color: rgba(94, 194, 237, 0.8);
+        }
+        .weather_list .col04{
+            background-color: rgba(69, 137, 176, 0.8);
+        }
+        .weather_list .col05{
+            background-color: rgba(118, 113, 223, 0.8);
+        } 
+
+
+        .info_date{
+            width:100%;
+            height:40px;
+            line-height:40px;
+            color:#999;
+            font-size:14px;
+            left:0px;    
+            bottom:0px;    
+            margin-top: 15px;
+        }
+        .info_date b{
+            float: left;
+            margin-left:15px;
+        }
+
+        .info_type span{
+            color:#fda252;
+            font-size:30px;
+            line-height:80px;
+        }
+        .info_temp{
+            font-size:14px;  
+            color:#fda252;
+        }
+        .info_temp b{
+            font-size:13px;
+        }
+        .tem .iconfont {
+            font-size: 50px;
+        }
+    </style>
+
+</body>
+
+
+</html>
