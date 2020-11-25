@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>图表分析</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <style>
+        *{
+            bottom: 0;
+            text-align: center;
+        }
+        .header{
+            height: 30px;
+            width: 100%;
+            line-height: 30px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-content: space-between;
+            flex-wrap: wrap;
+        }
+        .box {
+            width: 700px;
+            height: 400px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+        }
+        
+        .chart {
+            width: 680px;
+            height: 380px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>实时数据分析</h1>
+    </div>
+    <div class="container">
+        <div class="box left">
+            <h3>柱形图</h3>
+            <div class="chart" id="main"></div>
+        </div>
+        <div class="box left-bottom">
+            <h3>饼形图</h3>
+            <div class="chart" id="bin"></div>
+        </div>       
+        <div class="box right">
+            <h3>折线图</h3>
+            <div class="chart" id="zhe"></div>
+        </div>
+
+        <div class="box right-bottom" >
+            <h3>散点图</h3>
+            <div class="chart" id="dian">
+            </div>
+
+        </div>
+    </div>
+
+    <script >
+    (function(){
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+            legend: {},
+            tooltip: {},
+            dataset: {
+                source: [
+                    ['product', '2015', '2016', '2017'],
+                    ['产品1', 43.3, 85.8, 93.7],
+                    ['产品2', 1, 73.4, 55.1],
+                    ['产品3', 86.4, 65.2, 82.5, 3],
+                    ['产品4', 72.4, 53.9, 39.1, 4],
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {},
+            series: [
+              {
+                name: "直接访问",
+                type: "bar",
+                barWidth: "20%",
+                data: [200, 300, 300, 900, 1500, 1200, 600],
+                itemStyle: {
+                  barBorderRadius: 3
+                }
+              }
+            ]
+        };
+        myChart.setOption(option);
+    })();
+    //饼图
+    (function(){
+        var myChart = echarts.init(document.getElementById('bin'));
+        option = {
+            title: {
+                text: '某站点用户访问来源',
+                subtext: '1111',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        {value: 335, name: '直接访问'},
+                        {value: 310, name: '邮件营销'},
+                        {value: 234, name: '联盟广告'},
+                        {value: 135, name: '视频广告'},
+                        {value: 1548, name: '搜索引擎'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    })();
+    
+    //折线图
+    (function(){
+        var myChart = echarts.init(document.getElementById('zhe'));
+        option = {
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line'
+            }]
+        };
+        myChart.setOption(option);
+    })();    
+
+    //散点图
+    (function(){
+        var myChart = echarts.init(document.getElementById('dian'));
+        option = {
+            xAxis: {},
+            yAxis: {},
+            series: [{
+                symbolSize: 20,
+                data: [
+                    [1.0, 8.04],
+                    [8.0, 6.95],
+                    [13.0, 7.58],
+                    [9.0, 8.81],
+                    [11.0, 8.33],
+                    [14.0, 9.96],
+                    [6.0, 7.24],
+                    [4.0, 4.26],
+                    [12.0, 10.84],
+                    [7.0, 4.82],
+                    [5.0, 5.68]
+                ],
+                type: 'scatter'
+            }]
+        };
+        myChart.setOption(option);
+    })();    
+    </script>
+
+    
+</body>
+</html>

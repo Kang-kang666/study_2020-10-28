@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>局部组件</title>
+</head>
+<body>
+  <div id="app">
+    <hello-world></hello-world>
+    <hello></hello>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('test-com',{
+      template: '<div>Test<hello-world></hello-world></div>'
+    });
+    var HelloWorld = {
+      data: function(){
+        return {
+          msg: 'HelloWorld'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    };
+    var Hello = {
+      data: function(){
+        return {
+          msg: 'Hello'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    };
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        
+      },
+      components: {
+        'hello-world': HelloWorld,
+        'hello': Hello,
+      }
+    });
+  </script>
+</body>
+</html>

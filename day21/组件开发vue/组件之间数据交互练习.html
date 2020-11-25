@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>父组件</div>
+    <div>
+    </div>
+    <test-1></test-1>
+    <test-2></test-2>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script type="text/javascript">
+  // 事件中心
+    var hub = new Vue();
+
+    Vue.component('test-1', {
+      data: function(){
+        return {
+          num: 0
+        }
+      },
+      template: `
+        <div>
+          <div>A:{{num}}</div>
+          <div>
+            <button @click='handle'>点击</button>
+          </div>
+        </div>
+      `,
+      methods: {
+        handle: function(){
+          hub.$emit('b-event', 3);
+        }
+      },
+      mounted: function() {
+        hub.$on('a-event', (val) => {
+          this.num += val;
+        });
+      }
+    });
+
+
+    Vue.component('test-2', {
+      data: function(){
+        return {
+          num: 0
+        }
+      },
+      template: `
+        <div>
+          <div> B:{{num}}</div>
+          <div>
+            <button @click='handle'>点击</button>
+          </div>
+        </div>
+      `,
+      methods: {
+        handle: function(){
+          hub.$emit('a-event', 2);
+        }
+      },
+      mounted: function() {
+        hub.$on('b-event', (val) => {
+          this.num += val;
+        });
+      }
+    });
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        
+      },
+      methods: {
+      }
+    });
+  </script>
+</body>
+</html>

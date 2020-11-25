@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>父组件传值</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>{{msg}}</div>
+    <menu-item title='我是父组件'></menu-item>
+    <menu-item :title='title'></menu-item>
+  </div>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+      父组件向子组件传值-基本使用
+    */
+    Vue.component('menu-item', {
+      props: ['title'],
+      data: function() {
+        return {
+          msg: '我是子组件    '
+        }
+      },
+      template: '<div>{{msg + title}}</div>'
+    });
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '父组件中内容',
+        title: '动态绑定属性'
+      }
+    });
+  </script>
+</body>
+</html>
